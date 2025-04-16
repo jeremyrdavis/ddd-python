@@ -5,7 +5,7 @@ from .tshirt_size import TShirtSize
 
 @dataclass(frozen=True)
 class AttendeeValueObject():
-    attendee_id: int
+    id: int
     first_name: str
     last_name: str
     email: str

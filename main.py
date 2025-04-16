@@ -26,3 +26,32 @@ def create_attendee(command: CreateAttendeeCommand):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+@app.get("/attendees/", response_model=list[AttendeeValueObject])
+def get_all_attendees():
+    try:
+        return attendee_service.get_all_attendees()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/attendees/{attendee_id}", response_model=AttendeeValueObject)
+def get_attendee(attendee_id: int):
+    try:
+        attendees = attendee_service.get_all_attendees()
+        for attendee in attendees:
+            if attendee.id == attendee_id:
+                return attendee
+        raise HTTPException(status_code=404, detail="Attendee not found")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.delete("/attendees/{attendee_id}", status_code=204)
+def delete_attendee(attendee_id: int):
+    try:
+        attendees = attendee_service.get_all_attendees()
+        for attendee in attendees:
+            if attendee.id == attendee_id:
+                attendee_repository.delete_attendee(attendee_id)
+                return
+        raise HTTPException(status_code=404, detail="Attendee not found")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))

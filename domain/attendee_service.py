@@ -44,17 +44,7 @@ class AttendeeService:
                 id=attendee.id,
                 first_name=attendee.first_name,
                 last_name=attendee.last_name,
-                email=attendee.email,
-                t_shirt_size=attendee.t_shirt_size,
-                meal_preference=attendee.meal_preference,
-                impacted_by_layoffs=attendee.impacted_by_layoffs,
-                student=attendee.student,
-                street_address=attendee.address.street_address,
-                street_address2=attendee.address.street_address2,
-                city=attendee.address.city,
-                state_or_province=attendee.address.state_or_province,
-                post_code=attendee.address.post_code,
-                country_code=attendee.address.country_code,
+                email=attendee.email
             )
             attendee_value_objects.append(attendee_value_object)
         return attendee_value_objects
