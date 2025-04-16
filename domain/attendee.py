@@ -15,8 +15,7 @@ class Attendee(SQLModel, table=True):
     meal_preference: Optional[MealPreference] = None
     impacted_by_layoffs: bool
     student: bool
-    address: Address = Relationship(sa_relationship_kwargs={"cascade": "all, delete-orphan"})
-    address_id: int = Field(foreign_key="address.id")
+    address: Address = Relationship(sa_relationship_kwargs={"cascade": "all, delete-orphan", "uselist": False})
     id: int | None = Field(default=None, primary_key=True)
 
     @classmethod
