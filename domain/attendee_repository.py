@@ -1,4 +1,4 @@
-from sqlmodel import create_engine, SQLModel, Session
+from sqlmodel import create_engine, SQLModel, Session, select
 from .attendee import Attendee
 
 sqlite_file_name = "attendees.db"
@@ -17,3 +17,10 @@ class AttendeeRepository:
             session.commit()
             session.refresh(attendee)
             return attendee
+
+    def get_all_attendees(self):
+        create_db_and_tables()
+        with Session(engine) as session:
+            statement = select(Attendee)
+            attendees = session.exec(statement).all()
+            return attendees

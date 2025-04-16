@@ -25,3 +25,4 @@ def create_attendee(command: CreateAttendeeCommand):
         return attendee_service.register_attendee(command)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
