@@ -1,6 +1,6 @@
 from typing import Optional
 
-from sqlmodel import SQLModel, Field
+from sqlmodel import SQLModel, Field, Relationship
 
 from .meal_preference import MealPreference
 from .tshirt_size import TShirtSize
@@ -11,11 +11,12 @@ class Attendee(SQLModel, table=True):
     first_name: str
     last_name: str
     email: str
-    address: Address
     t_shirt_size: Optional[TShirtSize] = None
     meal_preference: Optional[MealPreference] = None
     impacted_by_layoffs: bool
     student: bool
+    address: Address = Relationship(sa_relationship_kwargs={"cascade": "all, delete-orphan"})
+    address_id: int = Field(foreign_key="address.id")
     id: int | None = Field(default=None, primary_key=True)
 
     @classmethod

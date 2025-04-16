@@ -1,7 +1,7 @@
 from enum import Enum
 
 class MealPreference(Enum):
-    NONE = "None"
-    VEGETARIAN = "Vegetarian"
-    GLUTEN_FREE = "Gluten Free"
-    TACOS = "Tacos"
+    NONE = "NONE"
+    VEGETARIAN = "VEGETARIAN"
+    GLUTEN_FREE = "GLUTEN_FREE"
+    TACOS = "TACOS"
