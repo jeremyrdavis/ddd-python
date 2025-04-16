@@ -28,7 +28,7 @@ class AttendeeService:
         persisted_attendee = self.attendee_repository.persist_attendee(attendee)
 
         attendee_value_object = AttendeeValueObject(
-            attendee_id=persisted_attendee.id,
+            id=persisted_attendee.id,
             first_name=persisted_attendee.first_name,
             last_name=persisted_attendee.last_name,
             email=persisted_attendee.email,
